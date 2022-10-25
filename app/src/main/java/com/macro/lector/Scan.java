@@ -116,71 +116,13 @@ public class Scan extends AppCompatActivity {
         });
 
         btGenerar.setOnClickListener(v -> {
-            try {
-
-                //EdwinP. se establece el directorio por defecto para guardar los archivos txt
-                //String path = Environment.getExternalStorageDirectory() + "/Android/media/com.macro.lector/Docs/";
-                String path = Environment.getExternalStorageDirectory() + "/Docs/";
-                File dir = new File(path);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                try {
-                   Calendar calendar= Calendar.getInstance();
-                   DateFormat dateFormat = new SimpleDateFormat("dMy");
-                   String date= dateFormat.format(Calendar.getInstance().getTime());
-                    LocalDateTime locaDate = null;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        locaDate = LocalDateTime.now();
-                    }
-                    int hours  = 0;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        hours = locaDate.getHour();
-                    }
-                    int minutes = 0;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        minutes = locaDate.getMinute();
-                    }
-                    int seconds = 0;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        seconds = locaDate.getSecond();
-                    }
-                    String _hours=String.valueOf(hours)+":";
-                    String _minutes=String.valueOf(minutes)+":";
-                    String horalocal="";
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        horalocal= String.valueOf(LocalTime.now());
-                    }
-                    if ( bandera == 0){
-                        String fullName = path + fileName +"-"+ date+hours+minutes+seconds+".txt";
-                        pathFinal=fullName;
-                        bandera=1;
-                    }
-
-                  //  String fullName = path + fileName +"-"+ date + horalocal +".txt";
-                    File file = new File(pathFinal);
-                    file.createNewFile();
-
-                    FileWriter writer = new FileWriter(file);
-//                        writer.append(tvResult.getText());
-                    for(int ii = 0; ii < contacts.size(); ii++){
-                        if (ii > 0){
-                            writer.append("\r\n");
-                        }
-                        writer.append(contacts.get(ii).descripcion);
-                    }
-                    writer.flush();
-                    writer.close();
-
-                } catch (Exception e) {
-                    Log.e("Error", "exFile: " + e);
-                }
-
-            } catch (Exception e) {
-                Log.e("Error", "exDir: " + e);
+            if (contacts.size()!=0)
+            _generararchivo();
+            else
+            {
+                Toast.makeText(this,"debe scañar un o mas para poder guardar el archivo",Toast.LENGTH_SHORT).show();
             }
 
-            Toast.makeText(getApplicationContext(), "El archivo " + fileName + ".txt se ha generado correctamente.", Toast.LENGTH_SHORT).show();
         });
 
         /////////////////////////////////////////////////////////////
@@ -255,5 +197,71 @@ public class Scan extends AppCompatActivity {
             intentShare.setType("*/*");
             intentShare.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
             startActivity(Intent.createChooser(intentShare,"Compartir en"));
+    }
+    private void _generararchivo(){
+        try {
+            //EdwinP. se establece el directorio por defecto para guardar los archivos txt
+            //String path = Environment.getExternalStorageDirectory() + "/Android/media/com.macro.lector/Docs/";
+            String path = Environment.getExternalStorageDirectory() + "/Docs/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            try {
+                Calendar calendar= Calendar.getInstance();
+                DateFormat dateFormat = new SimpleDateFormat("dMy");
+                String date= dateFormat.format(Calendar.getInstance().getTime());
+                LocalDateTime locaDate = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    locaDate = LocalDateTime.now();
+                }
+                int hours  = 0;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    hours = locaDate.getHour();
+                }
+                int minutes = 0;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    minutes = locaDate.getMinute();
+                }
+                int seconds = 0;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    seconds = locaDate.getSecond();
+                }
+                String _hours=String.valueOf(hours)+":";
+                String _minutes=String.valueOf(minutes)+":";
+                String horalocal="";
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    horalocal= String.valueOf(LocalTime.now());
+                }
+                if ( bandera == 0){
+                    String fullName = path + fileName +"-"+ date+hours+minutes+seconds+".txt";
+                    pathFinal=fullName;
+                    bandera=1;
+                }
+
+                //  String fullName = path + fileName +"-"+ date + horalocal +".txt";
+                File file = new File(pathFinal);
+                file.createNewFile();
+
+                FileWriter writer = new FileWriter(file);
+//                        writer.append(tvResult.getText());
+                for(int ii = 0; ii < contacts.size(); ii++){
+                    if (ii > 0){
+                        writer.append("\r\n");
+                    }
+                    writer.append(contacts.get(ii).descripcion);
+                }
+                writer.flush();
+                writer.close();
+
+            } catch (Exception e) {
+                Log.e("Error", "exFile: " + e);
+            }
+
+        } catch (Exception e) {
+            Log.e("Error", "exDir: " + e);
+        }
+
+        Toast.makeText(getApplicationContext(), "El archivo " + fileName + ".txt se ha generado correctamente.", Toast.LENGTH_SHORT).show();
     }
 }
