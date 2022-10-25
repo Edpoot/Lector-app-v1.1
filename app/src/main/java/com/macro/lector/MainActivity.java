@@ -1,14 +1,20 @@
 package com.macro.lector;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private long tiempoPrimerClick;
     private static final int INTERVALO = 2000; //2 segundos para salir
     //EdwinP. path para localizar el directorio y seleccionar archivos
-    private String stringFile =  Environment.getExternalStorageDirectory().getPath();
+//    String path = Environment.getExternalStorageDirectory()+"/Docs/Series.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +79,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //EdwinP. se le da acción al FAB
-        FloatingActionButton fab = findViewById(R.id.fabSearch);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Abrir el dialog explorer
+//        FloatingActionButton fab = findViewById(R.id.fabSearch);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Abrir el dialog explorer
+//
+//            }
+//        });
 
-            }
-        });
+        //EdwinP. líneas para darle acción al botón compartir
+        ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
         }
 
         //EdwinP, se integra para activar el toolbar
@@ -114,4 +126,17 @@ public class MainActivity extends AppCompatActivity {
         }
         tiempoPrimerClick = System.currentTimeMillis();
     }
+
+//    public void buttonShareFile(View view){
+//        File file = new File(path);
+//
+//        if (!file.exists()){
+//            Toast.makeText(this, "El archivo no existe", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//        Intent intentShare = new Intent(Intent.ACTION_SEND);
+//        intentShare.setType("*/*");
+//        intentShare.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
+//        startActivity(Intent.createChooser(intentShare,"Compartir"));
+//    }
 }

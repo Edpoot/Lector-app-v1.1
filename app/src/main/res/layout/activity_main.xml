@@ -51,16 +51,18 @@
         android:layout_height="wrap_content"
         android:text="Series" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSearch"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_document_scanner_24"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/todo"
-        app:layout_anchorGravity="bottom|right|end"/>
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fabSearch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:clickable="true"-->
+<!--        android:contentDescription="@string/todo"-->
+<!--        android:focusable="true"-->
+<!--        android:onClick="buttonShareFile"-->
+<!--        android:src="@drawable/ic_baseline_document_scanner_24"-->
+<!--        app:layout_anchorGravity="bottom|right|end"-->
+<!--        tools:ignore="ImageContrastCheck,UsingOnClickInXml" />-->
 
 </LinearLayout>
