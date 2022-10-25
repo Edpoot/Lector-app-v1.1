@@ -262,6 +262,6 @@ public class Scan extends AppCompatActivity {
             Log.e("Error", "exDir: " + e);
         }
 
-        Toast.makeText(getApplicationContext(), "El archivo " + fileName + ".txt se ha generado correctamente.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "El archivo se ha generado correctamente.", Toast.LENGTH_SHORT).show();
     }
 }

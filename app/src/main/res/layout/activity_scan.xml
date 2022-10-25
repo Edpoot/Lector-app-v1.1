@@ -69,6 +69,21 @@
             </LinearLayout>
 <!--    </ScrollView>-->
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginVertical="10dp"
+        android:layout_marginEnd="13dp"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
+        android:onClick="buttonShareFile"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_anchorGravity="bottom|right|end"
+        tools:ignore="ImageContrastCheck,UsingOnClickInXml" />
+
     <Button
         android:id="@+id/btnGenerar"
         android:layout_width="match_parent"
@@ -80,14 +95,13 @@
         android:textSize="16sp"
         android:text="@string/generar_archivo" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="buttonShareFile"
-        android:text="@string/enviar_archivo"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:background="@color/colorPrimaryDark"-->
+<!--        android:text="@string/enviar_archivo"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="16sp" />-->
 
 </LinearLayout>
