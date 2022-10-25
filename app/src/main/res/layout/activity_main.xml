@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:padding="15dp"
+    android:orientation="vertical"
+
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
+
+    <Button
+        android:id="@+id/btnDatos"
+        android:layout_weight="0.95"
+        android:layout_margin="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Datos" />
+
+
+
+    <Button
+        android:id="@+id/btnFichas"
+        android:layout_weight="0.95"
+        android:layout_margin="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fichas" />
+
+
+
+    <Button
+        android:id="@+id/btnSeries"
+        android:layout_weight="0.95"
+        android:layout_margin="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Series" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSearch"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_document_scanner_24"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/todo"
+        app:layout_anchorGravity="bottom|right|end"/>
+
+</LinearLayout>

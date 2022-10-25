@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lector</string>
+    <string name="provider_authority">com.macro.lector</string>
+    <string name="generar_archivo">Generar Archivo</string>
+    <string name="enviar_archivo">Enviar archivo</string>
+    <string name="todo">TODO</string>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    tools:context=".Scan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".1"
+        android:weightSum="5">
+        <EditText
+            android:id="@+id/etReader"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:layout_weight="4"
+            android:inputType="textPersonName"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:text="0"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+
+
+<!--    <ScrollView-->
+<!--        android:layout_weight="5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7.8"
+            android:orientation="vertical">
+<!--            <TextView-->
+<!--                android:id="@+id/tvResult"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="textMultiLine"-->
+<!--                android:text="" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvResumen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            </LinearLayout>
+<!--    </ScrollView>-->
+
+    <Button
+        android:id="@+id/btnGenerar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight=".1"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="@string/generar_archivo" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="buttonShareFile"
+        android:text="@string/enviar_archivo"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>
